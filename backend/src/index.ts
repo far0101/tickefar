@@ -6,6 +6,8 @@ import { Server } from 'socket.io';
 import rateLimit from 'express-rate-limit';
 import { connectDB } from './config/db';
 import authRoutes from './routes/auth.routes';
+import venueRoutes from './routes/venue.routes';
+import eventRoutes from './routes/event.routes';
 import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
@@ -33,7 +35,9 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'ok' });
 });
 
-app.use('/api/auth', authRoutes);
+app.use('/api/auth',   authRoutes);
+app.use('/api/venues', venueRoutes);
+app.use('/api/events', eventRoutes);
 
 app.use(errorHandler);
 
