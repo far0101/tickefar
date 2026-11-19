@@ -112,7 +112,7 @@ export default function EventDetailPage() {
         {event.title}
       </Typography>
       <Typography variant="body1" color="text.secondary" gutterBottom>
-        📍 {typeof event.venue === 'object' ? `${event.venue.name} — ${event.venue.address}` : '—'}
+        {typeof event.venue === 'object' ? `${event.venue.name} — ${event.venue.address}` : '—'}
       </Typography>
 
       <Divider sx={{ my: 3 }} />

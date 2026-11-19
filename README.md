@@ -1,4 +1,4 @@
-# 🎟 Tickefar
+# Tickefar
 
 Ticketera full-stack — Trabajo Integrador 7° año Técnico en Programación (Buenos Aires).
 

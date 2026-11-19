@@ -62,7 +62,7 @@ export default function MyTicketsPage() {
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
       <Typography variant="h4" fontWeight={700} gutterBottom>
-        🎟 Mis Entradas
+        Mis Entradas
       </Typography>
 
       {offline && (
@@ -110,7 +110,7 @@ export default function MyTicketsPage() {
 
                   <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Typography variant="body2">
-                      📅 {new Date(ticket.eventDate).toLocaleDateString('es-AR', {
+                      Fecha: {new Date(ticket.eventDate).toLocaleDateString('es-AR', {
                         day: 'numeric', month: 'long', year: 'numeric',
                       })}
                     </Typography>

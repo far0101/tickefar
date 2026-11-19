@@ -102,7 +102,7 @@ export default function HomePage() {
   return (
     <Container maxWidth={false} sx={{ py: 4, px: { xs: 2, sm: 4, md: 6 }, width: '100%' }}>
       <Typography variant="h4" fontWeight={700} gutterBottom>
-        🎟 Próximos eventos
+        Próximos eventos
       </Typography>
 
       {/* Filtros */}

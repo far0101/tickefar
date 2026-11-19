@@ -65,7 +65,7 @@ export default function EventCard({ event }: Props) {
           {event.title}
         </Typography>
         <Typography variant="body2" color="text.secondary" noWrap>
-          📍 {typeof event.venue === 'object' ? event.venue.name : '—'}
+          {typeof event.venue === 'object' ? event.venue.name : '—'}
         </Typography>
         <Typography variant="body2" color="primary" fontWeight={600} sx={{ mt: 1 }}>
           Desde ${minPrice.toLocaleString('es-AR')}
