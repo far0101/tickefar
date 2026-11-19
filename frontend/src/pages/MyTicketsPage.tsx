@@ -9,8 +9,8 @@ import {
   CircularProgress,
   Alert,
   Divider,
-  Grid,
 } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import WifiOffIcon from '@mui/icons-material/WifiOff';
 import api from '../services/api';

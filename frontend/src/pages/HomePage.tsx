@@ -8,12 +8,12 @@ import {
   FormControl,
   InputLabel,
   Button,
-  Grid,
   CircularProgress,
   Alert,
   Container,
   type SelectChangeEvent,
 } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import api from '../services/api';
 import EventCard from '../components/EventCard';
@@ -49,16 +49,19 @@ export default function HomePage() {
 
   useEffect(() => {
     void api.get<Venue[]>('/api/venues').then(({ data }) => setVenues(data)).catch(() => null);
-    void fetchEvents();
-  }, [fetchEvents]);
+  }, []);
 
-  const handleSearch = () => {
-    const params: Record<string, string> = {};
-    if (search)   params['search']   = search;
-    if (category) params['category'] = category;
-    if (venueId)  params['venue']    = venueId;
-    void fetchEvents(params);
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const params: Record<string, string> = {};
+      if (search.trim()) params['search'] = search.trim();
+      if (category)      params['category'] = category;
+      if (venueId)       params['venue']    = venueId;
+      void fetchEvents(params);
+    }, 250);
+
+    return () => clearTimeout(timer);
+  }, [search, category, venueId, fetchEvents]);
 
   const handleCategoryChange = (e: SelectChangeEvent) => setCategory(e.target.value);
   const handleVenueChange    = (e: SelectChangeEvent) => setVenueId(e.target.value);
@@ -97,7 +100,7 @@ export default function HomePage() {
   };
 
   return (
-    <Container maxWidth="xl" sx={{ py: 4 }}>
+    <Container maxWidth={false} sx={{ py: 4, px: { xs: 2, sm: 4, md: 6 }, width: '100%' }}>
       <Typography variant="h4" fontWeight={700} gutterBottom>
         🎟 Próximos eventos
       </Typography>
@@ -116,12 +119,11 @@ export default function HomePage() {
           label="Buscar artista o evento"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
           size="small"
-          sx={{ minWidth: 220 }}
+          sx={{ minWidth: 260, flexGrow: { xs: 1, sm: 0 } }}
         />
 
-        <FormControl size="small" sx={{ minWidth: 160 }}>
+        <FormControl size="small" sx={{ minWidth: 160, flexGrow: { xs: 1, sm: 0 } }}>
           <InputLabel>Categoría</InputLabel>
           <Select value={category} label="Categoría" onChange={handleCategoryChange}>
             <MenuItem value="">Todas</MenuItem>
@@ -131,7 +133,7 @@ export default function HomePage() {
           </Select>
         </FormControl>
 
-        <FormControl size="small" sx={{ minWidth: 200 }}>
+        <FormControl size="small" sx={{ minWidth: 200, flexGrow: { xs: 1, sm: 0 } }}>
           <InputLabel>Venue</InputLabel>
           <Select value={venueId} label="Venue" onChange={handleVenueChange}>
             <MenuItem value="">Todos</MenuItem>
@@ -140,10 +142,6 @@ export default function HomePage() {
             ))}
           </Select>
         </FormControl>
-
-        <Button variant="contained" onClick={handleSearch} disabled={loading}>
-          Buscar
-        </Button>
 
         <Button
           variant="outlined"
@@ -161,10 +159,9 @@ export default function HomePage() {
               setSearch('');
               setCategory('');
               setVenueId('');
-              void fetchEvents();
             }}
           >
-            Limpiar
+            Limpiar filtros
           </Button>
         )}
       </Box>

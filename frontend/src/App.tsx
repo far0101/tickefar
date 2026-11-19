@@ -20,7 +20,7 @@ export default function App() {
       <AuthProvider>
         <BrowserRouter>
           <Navbar />
-          <Box component="main" sx={{ p: 2 }}>
+          <Box component="main" sx={{ width: '100%', minHeight: 'calc(100vh - 64px)', boxSizing: 'border-box' }}>
             <Suspense fallback={null}>
               <Routes>
                 <Route path="/"           element={<HomePage />} />
