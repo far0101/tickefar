@@ -5,6 +5,8 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import rateLimit from 'express-rate-limit';
 import { connectDB } from './config/db';
+import authRoutes from './routes/auth.routes';
+import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
 const httpServer = createServer(app);
@@ -23,13 +25,17 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 
-app.use(limiter);
 app.use(cors({ origin: process.env.CLIENT_URL ?? 'http://localhost:5173' }));
 app.use(express.json());
+app.use('/api', limiter);
 
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok' });
 });
+
+app.use('/api/auth', authRoutes);
+
+app.use(errorHandler);
 
 io.on('connection', (socket) => {
   socket.on('disconnect', () => {});
