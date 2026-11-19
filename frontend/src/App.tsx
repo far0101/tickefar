@@ -12,7 +12,7 @@ const EventDetail   = lazy(() => import('./pages/EventDetailPage'));
 const LoginPage     = lazy(() => import('./pages/LoginPage'));
 const RegisterPage  = lazy(() => import('./pages/RegisterPage'));
 const MyTickets     = lazy(() => import('./pages/MyTicketsPage'));
-const AdminPage     = lazy(() => import('./pages/AdminPage'));
+const AdminPage     = lazy(() => import('./pages/AdminEventsPage'));
 
 export default function App() {
   return (
