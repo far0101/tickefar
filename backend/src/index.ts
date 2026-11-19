@@ -5,9 +5,9 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import rateLimit from 'express-rate-limit';
 import { connectDB } from './config/db';
-import authRoutes   from './routes/auth.routes';
-import venueRoutes  from './routes/venue.routes';
-import eventRoutes  from './routes/event.routes';
+import authRoutes from './routes/auth.routes';
+import venueRoutes from './routes/venue.routes';
+import eventRoutes from './routes/event.routes';
 import ticketRoutes from './routes/ticket.routes';
 import { errorHandler } from './middlewares/errorHandler';
 
@@ -36,15 +36,15 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'ok' });
 });
 
-app.use('/api/auth',    authRoutes);
-app.use('/api/venues',  venueRoutes);
-app.use('/api/events',  eventRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/venues', venueRoutes);
+app.use('/api/events', eventRoutes);
 app.use('/api/tickets', ticketRoutes);
 
 app.use(errorHandler);
 
 io.on('connection', (socket) => {
-  socket.on('disconnect', () => {});
+  socket.on('disconnect', () => { });
 });
 
 const PORT = Number(process.env.PORT ?? 4000);
