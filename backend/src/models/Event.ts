@@ -17,10 +17,10 @@ export interface IEvent extends Document {
 }
 
 const eventSchema = new Schema<IEvent>({
-  title:    { type: String, required: true, trim: true },
-  artist:   { type: String, required: true, trim: true },
+  title: { type: String, required: true, trim: true },
+  artist: { type: String, required: true, trim: true },
   category: { type: String, enum: ['Recital', 'Freestyle', 'Teatro', 'Stand-Up'], required: true },
-  dates:    {
+  dates: {
     type: [Date],
     required: true,
     validate: {
@@ -29,11 +29,11 @@ const eventSchema = new Schema<IEvent>({
     },
   },
   imageUrl: { type: String, required: true },
-  venue:    { type: Schema.Types.ObjectId, ref: 'Venue', required: true },
-  sectors:  [
+  venue: { type: Schema.Types.ObjectId, ref: 'Venue', required: true },
+  sectors: [
     {
-      name:             { type: String, required: true },
-      price:            { type: Number, required: true },
+      name: { type: String, required: true },
+      price: { type: Number, required: true },
       availableTickets: { type: Number, required: true },
     },
   ],

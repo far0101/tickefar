@@ -149,8 +149,8 @@ export default function EventFormDialog({ open, onClose, onSaved, editing }: Pro
           <TextField label="URL imagen" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required fullWidth size="small" />
 
           <FormControl fullWidth size="small">
-            <InputLabel>Venue</InputLabel>
-            <Select value={venueId} label="Venue" onChange={handleVenueChange}>
+            <InputLabel>Estadio</InputLabel>
+            <Select value={venueId} label="Estadio" onChange={handleVenueChange}>
               {venues.map((v) => <MenuItem key={v._id} value={v._id}>{v.name}</MenuItem>)}
             </Select>
           </FormControl>

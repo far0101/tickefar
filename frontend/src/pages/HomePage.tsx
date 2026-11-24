@@ -79,7 +79,7 @@ export default function HomePage() {
             params: { lng: coords.longitude, lat: coords.latitude, maxDistance: 10000 },
           });
           if (data.length === 0) {
-            setError('No hay venues cercanos en un radio de 10 km.');
+            setError('No hay estadios cercanos en un radio de 10 km.');
             setEvents([]);
           } else {
             const nearIds = data.map((v) => v._id).join(',');
@@ -87,7 +87,7 @@ export default function HomePage() {
             setEvents(evs.filter((e) => nearIds.includes(typeof e.venue === 'object' ? e.venue._id : e.venue)));
           }
         } catch {
-          setError('Error al obtener venues cercanos.');
+          setError('Error al obtener estadios cercanos.');
         } finally {
           setNearLoading(false);
         }
@@ -134,8 +134,8 @@ export default function HomePage() {
         </FormControl>
 
         <FormControl size="small" sx={{ minWidth: 200, flexGrow: { xs: 1, sm: 0 } }}>
-          <InputLabel>Venue</InputLabel>
-          <Select value={venueId} label="Venue" onChange={handleVenueChange}>
+          <InputLabel>Estadio</InputLabel>
+          <Select value={venueId} label="Estadio" onChange={handleVenueChange}>
             <MenuItem value="">Todos</MenuItem>
             {venues.map((v) => (
               <MenuItem key={v._id} value={v._id}>{v.name}</MenuItem>

@@ -63,7 +63,7 @@ export default function EventsPage() {
           const { data: evs } = await api.get<Event[]>('/api/events');
           const nearIds = data.map((v) => v._id);
           setEvents(evs.filter((e) => nearIds.includes(typeof e.venue === 'object' ? e.venue._id : e.venue)));
-        } catch { setError('Error al obtener venues cercanos.'); }
+        } catch { setError('Error al obtener estadios cercanos.'); }
         finally  { setNearLoading(false); }
       },
       () => { setError('No se pudo obtener tu ubicación.'); setNearLoading(false); },
@@ -89,8 +89,8 @@ export default function EventsPage() {
           </Select>
         </FormControl>
         <FormControl size="small" sx={{ minWidth: 200, flexGrow: { xs: 1, sm: 0 } }}>
-          <InputLabel>Venue</InputLabel>
-          <Select value={venueId} label="Venue" onChange={(e: SelectChangeEvent) => setVenueId(e.target.value)}>
+          <InputLabel>Estadio</InputLabel>
+          <Select value={venueId} label="Estadio" onChange={(e: SelectChangeEvent) => setVenueId(e.target.value)}>
             <MenuItem value="">Todos</MenuItem>
             {venues.map((v) => <MenuItem key={v._id} value={v._id}>{v.name}</MenuItem>)}
           </Select>

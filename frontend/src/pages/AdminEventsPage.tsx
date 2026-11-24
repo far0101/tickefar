@@ -13,12 +13,12 @@ import EventFormDialog from '../components/EventFormDialog';
 import type { Event } from '../types';
 
 export default function AdminEventsPage() {
-  const [events,  setEvents]  = useState<Event[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error,   setError]   = useState<string | null>(null);
-  const [formOpen,  setFormOpen]  = useState(false);
-  const [editing,   setEditing]   = useState<Event | null>(null);
-  const [deleting,  setDeleting]  = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [formOpen, setFormOpen] = useState(false);
+  const [editing, setEditing] = useState<Event | null>(null);
+  const [deleting, setDeleting] = useState<string | null>(null);
 
   const fetchEvents = useCallback(async () => {
     setLoading(true);
@@ -83,7 +83,7 @@ export default function AdminEventsPage() {
                 <TableCell><strong>Título</strong></TableCell>
                 <TableCell><strong>Artista</strong></TableCell>
                 <TableCell><strong>Categoría</strong></TableCell>
-                <TableCell><strong>Venue</strong></TableCell>
+                <TableCell><strong>Estadio</strong></TableCell>
                 <TableCell><strong>Fechas</strong></TableCell>
                 <TableCell><strong>Sectores</strong></TableCell>
                 <TableCell align="center"><strong>Acciones</strong></TableCell>
