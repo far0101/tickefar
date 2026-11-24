@@ -100,49 +100,28 @@ El sistema implementa una arquitectura desacoplada cliente-servidor, comunicada 
 
 ---
 
-## 4. Capturas de Pantalla
 
-*Nota: Las imagenes representan los flujos principales de la aplicacion y deben ubicarse en la carpeta `/docs/screenshots/`.*
+## 4. Dificultades y Soluciones
 
-### 4.1 Catalogo Principal y Filtros en Tiempo Real
-Ruta: `/docs/screenshots/01-catalogo-home.png`
-Vista de la cartelera completa en ancho de pantalla extendido con buscador por artista/titulo, selectores de categoria y estadio, y tarjeta de cada evento con precio minimo.
-
-### 4.2 Detalle de Evento y Seleccion de Sector
-Ruta: `/docs/screenshots/02-detalle-evento.png`
-Visualizacion de sectores, precios, cupos disponibles en vivo sincronizados con Socket.io y dialogo de adquisicion de entradas.
-
-### 4.3 Panel de Administracion (CRUD de Eventos)
-Ruta: `/docs/screenshots/03-admin-eventos.png`
-Tabla interactiva accesible unicamente con rol `admin` para crear, editar, asignar cupos/precios por sector y eliminar eventos.
-
-### 4.4 Mis Entradas y Modo Offline
-Ruta: `/docs/screenshots/04-mis-entradas-offline.png`
-Listado de tickets con codigo unico alfanumerico de compra, detalles de funcion y banner de advertencia cuando la red no responde e IndexedDB asume la entrega de datos.
-
----
-
-## 5. Dificultades y Soluciones
-
-### 5.1 Manejo de Concurrencia y Sobreventa de Stock
+### 4.1 Manejo de Concurrencia y Sobreventa de Stock
 - **Problema:** Riesgo de ventas simultaneas que pudieran superar los cupos disponibles en un sector.
 - **Solucion:** Validacion rigurosa de stock disponible en la capa de servicio (`hasStock`) antes de descontar los cupos y generar el ticket, complementado con emision inmediata del nuevo estado del sector a todos los clientes suscritos.
 
-### 5.2 Estilos Predeterminados de Plantillas Vite en Ancho Completo
+### 4.2 Estilos Predeterminados de Plantillas Vite en Ancho Completo
 - **Problema:** La plantilla inicial de Vite incorporaba un ancho maximo fijo de 1280px y centrado automatico en el contenedor raiz, haciendo que la aplicacion se viera estrecha en monitores modernos.
 - **Solucion:** Reescritura de las reglas globales en `index.css` y `App.css`, configurando `html`, `body` y `#root` con ancho del 100% y eliminando la propiedad `max-width`, en sintonia con los contenedores fluidos de Material UI.
 
-### 5.3 Compatibilidad de Grid en Material UI v6
+### 4.3 Compatibilidad de Grid en Material UI v6
 - **Problema:** En MUI v6, la especificacion de columnas mediante la propiedad `size` genera incompatibilidades de tipado si se importa el componente tradicional `Grid`.
 - **Solucion:** Migracion a `import Grid from '@mui/material/Grid2'`, estandarizando la composicion responsive con la propiedad `size={{ xs: 12, sm: 6, md: 4, lg: 3 }}`.
 
-### 5.4 Persistencia Desacoplada sin Dependencias Externas en Cliente
+### 4.4 Persistencia Desacoplada sin Dependencias Externas en Cliente
 - **Problema:** Almacenar tickets en el cliente sin anadir librerias pesadas ni saturar los limites de almacenamiento de LocalStorage.
 - **Solucion:** Construccion de un servicio modular nativo con la API estandar de `window.indexedDB`, manejando transacciones asincronas de lectura y escritura en `services/indexedDb.ts`.
 
 ---
 
-## 6. Conclusiones y Aprendizajes
+## 5. Conclusiones y Aprendizajes
 
 - El uso de TypeScript en modo estricto en ambos extremos de la aplicacion permitio un desarrollo ordenado y redujo drasticamente los errores habituales de desacople en formatos de datos.
 - La combinacion de Express con esquemas declarativos en Zod resulta en endpoints autovalidados que protegen la integridad de la base de datos sin sobrecargar la logica de los controladores.
@@ -151,9 +130,9 @@ Listado de tickets con codigo unico alfanumerico de compra, detalles de funcion 
 
 ---
 
-## 7. Archivos de Configuracion (.env.example completos)
+## 6. Archivos de Configuracion (.env.example completos)
 
-### 7.1 Backend (`backend/.env.example`)
+### 6.1 Backend (`backend/.env.example`)
 ```env
 # Puerto en el que escucha el servidor Express
 PORT=4000
@@ -168,7 +147,7 @@ JWT_SECRET=supersecretkey
 CLIENT_URL=http://localhost:5173
 ```
 
-### 7.2 Frontend (`frontend/.env.example`)
+### 6.2 Frontend (`frontend/.env.example`)
 ```env
 # URL base de la API backend para solicitudes HTTP de Axios y Socket.io
 VITE_API_URL=http://localhost:4000
