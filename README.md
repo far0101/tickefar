@@ -107,7 +107,7 @@ VITE_API_URL=http://localhost:4000
   - Email: `faryd@tickefar.com`
   - Contrasena: `User123!`
 
-## Autores
+## Autor
 
 - Faryd Jalil (GitHub: [far0101](https://github.com/far0101) - Email: farydjalil@gmail.com)
-  - Trabajo Integrador de 7mo ano - Tecnico en Programacion
+  - Trabajo Integrador de 7mo año - Tecnico en Programacion

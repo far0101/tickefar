@@ -3,7 +3,7 @@
 ## 1. Introduccion y Objetivos
 
 ### 1.1 Introduccion
-Tickefar es una aplicacion web full-stack orientada a la venta, distribucion y gestion de entradas para espectaculos, recitales y obras de teatro situados en la Ciudad Autonoma de Buenos Aires (CABA). El proyecto surge en el marco del Trabajo Integrador final correspondiente al 7mo ano de la especialidad Tecnico en Programacion.
+Tickefar es una aplicacion web full-stack orientada a la venta, distribucion y gestion de entradas para espectaculos, recitales y obras de teatro situados en la Ciudad Autonoma de Buenos Aires (CABA). El proyecto surge en el marco del Trabajo Integrador final correspondiente al 7mo año de la especialidad Tecnico en Programacion.
 
 ### 1.2 Objetivos Generales
 - Desarrollar un sistema completo, robusto y escalable aplicando buenas practicas de desarrollo de software.
